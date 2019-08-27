@@ -1,0 +1,14 @@
+FROM docker.elastic.co/elasticsearch:5.6.16 
+LABEL maintainer "ygqygq2 <29ygq@sina.com>"
+
+ENV ELASTICSEARCH_PLUGINS=""
+
+COPY rootfs /
+
+EXPOSE 9200 9300
+
+# user: elasticsearch
+USER 1000
+
+ENTRYPOINT [ "/entrypoint.sh" ]
+CMD [ "/usr/share/elasticsearch/bin/es-docker" ]
